@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Processing Result</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .result-section {
+            margin-bottom: 30px;
+        }
+        .result-image {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: block;
+            margin: 0 auto 30px;
+        }
+        .result-data {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .result-item {
+            margin-bottom: 15px;
+        }
+        .result-label {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        .result-value {
+            color: #333;
+            font-size: 1.1em;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .labels-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .label-tag {
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 AI Processing Result</h1>
+        
+        <div class="result-section">
+            <img src="/uploads/{{ filename }}" alt="Uploaded image" class="result-image">
+        </div>
+        
+        <div class="result-data">
+            <div class="result-item">
+                <div class="result-label">Status:</div>
+                <div class="result-value">{{ result.status }}</div>
+            </div>
+            
+            <div class="result-item">
+                <div class="result-label">Prediction:</div>
+                <div class="result-value">{{ result.prediction }}</div>
+            </div>            
+            
+            <div class="result-item">
+                <div class="result-label">Processed At:</div>
+                <div class="result-value">{{ result.processed_at }}</div>
+            </div>
+        </div>
+        
+        <a href="/" class="btn">📸 Process Another Image</a>
+    </div>
+</body>
+</html>
