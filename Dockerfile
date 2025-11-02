@@ -1,12 +1,12 @@
 FROM python:3.11-slim
 
-# Install correct OpenCV system dependencies
+# Install OpenCV system deps
 RUN apt-get update && apt-get install -y \
     libgl1 \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
-# Optional: Speed up TensorFlow startup
+# Optimize TensorFlow
 ENV TF_CPP_MIN_LOG_LEVEL=3
 ENV CUDA_VISIBLE_DEVICES=""
 
@@ -17,4 +17,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["python", "app.py"]
+# Use Gunicorn + $PORT
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:$PORT", "--workers", "1", "--timeout", "120"]
