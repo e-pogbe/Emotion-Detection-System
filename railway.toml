@@ -1,5 +1,0 @@
-[build]
-builder = "NIXPACKS"
-
-[build.nixpacksPlan]
-path = "nixpacks.toml"
